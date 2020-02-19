@@ -42,42 +42,42 @@ console.log(sum)
 // 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
 
 // Найдите сумму всех четных элементов ряда Фибоначчи, которые не превышают четыре миллиона.
-
-let sum2 = 0
-let last1 = 0
-let last2 = 1
-for (var i = 0; i <= 4000000;) {
-	i = last1 + last2
-	last1 = last2
-	last2 = i
-	if( i%2 == 0 ){
-		sum2 += i
-	}
-}
+// let fibonacciSum = 0
+// let fibonacciSequence = [1,2]
+// while (fibonacciSequence[fibonacciSequence.length -1] < 20){
+// 	i = fibonacciSequence[fibonacciSequence.length -1] + fibonacciSequence[fibonacciSequence.length -2]
+// 	if(i%2 == 0){
+// 		fibonacciSequence.push(i)
+// 	}
+// 	fibonacciSequence.map((el)=>{
+// 		fibonacciSum+=el
+// 	})
+// }
+// console.log(fibonacciSum)
 
 
 //Задача3 
 // Простые делители числа 13195 - это 5, 7, 13 и 29.
 
-// Каков самый большой делитель числа 600851475143, являющийся простым числом?
-let c = []
-let result3 = 0
+// Каков самый большой делитель числа 600851475143, являющийся простым числом? (Не РЕШЕНО)
+// let c = []
+// let result3 = 0
 
-for (var i = 0; i < 60085147; i++) {
-	if( 6008514%i == 0 	){
-		c.push(i)
-	}
-}
+// for (var i = 0; i < 60085147; i++) {
+// 	if( 6008514%i == 0 	){
+// 		c.push(i)
+// 	}
+// }
 
-console.log(c)
+// console.log(c)
 
-c.map(( number )=>{
-	if ( number > result3 ){
-		result3 = number
-	}
-})
+// c.map(( number )=>{
+// 	if ( number > result3 ){
+// 		result3 = number
+// 	}
+// })
 
-console.log(result3)
+// console.log(result3)
 
 //Задача4
 // Задача 4
@@ -85,25 +85,59 @@ console.log(result3)
 // Число-палиндром с обеих сторон (справа налево и слева направо) читается одинаково. Самое большое число-палиндром, полученное умножением двух двузначных чисел – 9009 = 91 × 99.
 
 // Найдите самый большой палиндром, полученный умножением двух трехзначных чисел.
-let num1 = 25
-let num2 = 25
-let arr1 = []
-let arr2 = []
-let g = 1
-let f = []
+let x = 999
+let y = 999
+let biggestPalindrom = 0
+let palindroms = []
+while(x > 0){
+  let m = String(x*y)
+  let n = m.split('').reverse().join('')
+  if( m == n ){
+    palindroms.push(m)
+  }
+  if(x == 100){
+    x = 1000
+    y--
+  }
+  if(y == 100){
+    break
+  }
+  x--
+}
 
-for (var i; num1 > 0; num1--) {
-	i = num1 * num2
-	arr1 = String(i)
-	arr2 = arr1
+palindroms.map((el)=>{
+  if(Number(el) > biggestPalindrom){
+    biggestPalindrom = Number(el)
+  }
+})
 
-	console.log (arr1.split(' '))
-	for (var h = arr1.length - 1; h >= 0; h--) {
-		if(arr1[h] == arr2[h]){
-		 	console.log(arr1[h] + ' ' + arr2[h])
+console.log(biggestPalindrom)
+
+
+// Задача 5
+// Наименьшее кратное
+//  2520 - самое маленькое число, которое делится без остатка на все числа от 1 до 10.
+
+// Какое самое маленькое число делится нацело на все числа от 1 до 20?
+i = 2 // Первое число с которого проверяется
+let max = 20 // Число до которого все числа должны делить без остатка
+let breakFlag = false // Переменная для выхода из двойного цикла
+while(true){ 
+	x = 1
+	//Цикл который делит число на все числа до максимального и если остаток от деления не равен 0 прерывается, в случае дохождения до числа равного максимальному выводит число которо делилось на все числа до максимального и завершает все циклы
+	while(x <= max){
+		if( i%x != 0){
+			break
 		}
+		if(x == max){
+			console.log(i)
+			breakFlag = true
+			break
+		}
+		x++
 	}
-	if(g == 0){
-		f.push(i)
+	if(breakFlag){
+		break
 	}
+	i+=2
 }
