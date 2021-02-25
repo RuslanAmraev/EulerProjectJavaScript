@@ -2,36 +2,16 @@
 // Если выписать все натуральные числа меньше 10, кратные 3 или 5, то получим 3, 5, 6 и 9. Сумма этих чисел равна 23.
 
 // Найдите сумму всех чисел меньше 1000, кратных 3 или 5.
-let a = []
-let sum = 0
-// Пробегаемся по всем числам и если остаток от деления от 3 или 5 == 0 то пушим в массив
-for (var i = 1; i < 1000; i++) {
-	if (i%3 == 0) {a.push(i)}
-	else if (i%5 == 0) {a.push(i)}
+var sum = 0;
+for (var i = 0; i < 1000; i++) {
+  if (i % 5 == 0) {
+    sum += i;
+  } else if (i % 3 == 0) {
+    sum += i;
+  }
 }
-console.log(a)
 
-// Пробегаемся по массиву и суммируем всё в переменную с помощью метода map
-a.map(( number )=>{ sum += number })
-// Пробегаемся по массиву и суммируем всё в переменную с помощью цикла
-// for (var i = a.length - 1; i >= 0; i--) {
-// 	sum += a[i]
-// }
-// Выводим результат
-console.log(sum)
-
-// function input1(){
-// 	let full = 1000
-// 	for (var i = 1; i < full; i++) {
-// 	if (i%3 == 0) {a.push(i)}
-// 		else if (i%5 == 0) {a.push(i)}
-// }
-// 	a.map(( number )=>{ sum += number })
-// 	document.getElementById('result-1').textContent = sum 
-// 	sum = 0
-// 	a = []
-// }
-
+console.log(sum);
 
 
 
